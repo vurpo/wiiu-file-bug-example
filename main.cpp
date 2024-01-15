@@ -112,13 +112,10 @@ int main(int argc, char **argv)
          WHBGfxFinishRenderDRC();
          WHBGfxFinishRender();
       }
-
-      // I don't think this is related, it behaves the same either way:
-      WHBGfxFreeShaderGroup(group);
-      // or:
-      // GLSL_FreeVertexShader(group->vertexShader);
-      // GLSL_FreePixelShader(group->pixelShader);
-      // free(group);
+      
+      GLSL_FreeVertexShader(group->vertexShader);
+      GLSL_FreePixelShader(group->pixelShader);
+      free(group);
    }
    WHBLogPrintf("Done. Quitting...");
    WHBGfxShutdown();
